@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Requests history{% endblock %}
+
+{% block content %}
+
+{% for log in object_list %}
+<p>
+    User id: {{ log.user_id }}
+    {{ log.method }}
+    {{ log.path }}
+    {{ log.time_delta }}
+    {{ log.created }}
+</p>
+{% endfor %}
+
+{% endblock %}
