@@ -135,3 +135,4 @@ settings_local.py
 !.gitkeep
 avatar/
 static_content/
+.env

@@ -1,11 +1,13 @@
+deploy:
+
 python manage.py makemigrations
 python manage.py migrate
 
-
-python manage.py dumpdata user_profile.User --indent 4 >user.json
 python manage.py loaddata user.json
 
 
+
+python manage.py dumpdata user_profile.User --indent 4 >user.json
 celery -A test_task worker -l info # celery start
 celery -A test_task worker -l info -B #celery and celerybeat start
 
