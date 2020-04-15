@@ -1,15 +1,22 @@
 import datetime
 
 from django.urls import reverse_lazy
-from django.views.generic import View, TemplateView, ListView, UpdateView
+from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView
 
 from user_profile.models import User, Logger, EditFormIpLogger
-from user_profile.forms import CustomUserChangeForm
+from user_profile.forms import CustomUserChangeForm, SignUpForm
 
 
 # 1.Add front page, where you'll show your profile data
 class MyProfileView(TemplateView):
     template_name = 'my_profile.html'
+
+
+class SignUpView(CreateView):
+    template_name = 'signup.html'
+    queryset = User.objects.all()
+    success_url = reverse_lazy('index')
+    form_class = SignUpForm
 
 
 def get_ip(request):
