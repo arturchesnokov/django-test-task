@@ -22,3 +22,9 @@ class EditFormIpLogger(models.Model):
     user_id = models.IntegerField()
     user_ip = models.CharField(max_length=15)
     created = models.DateTimeField(auto_now_add=True)
+
+
+class ModelSaveSignal(models.Model):
+    user_id = models.IntegerField()
+    description = models.CharField(max_length=15)
+    created = models.DateTimeField(auto_now_add=True)
