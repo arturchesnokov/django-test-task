@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}settings_list{% endblock %}
+
+{% block content %}
+
+    <p>TIME_ZONE = {{ TIME_ZONE }}</p>
+    <p>LANGUAGE_CODE = {{LANGUAGE_CODE}}</p>
+
+{% for key, value in settings_list.items %}
+<p>
+    {{ key }} - {{ value }}
+</p>
+{% endfor %}
+
+{% endblock %}
