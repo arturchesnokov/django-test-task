@@ -77,10 +77,21 @@ WSGI_APPLICATION = 'test_task.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['POSTGRES_DB'],
+        'USER': os.environ['POSTGRES_USER'],
+        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+        'HOST': os.environ['POSTGRES_HOST'],
+        'PORT': os.environ['POSTGRES_PORT'],
     }
 }
 
@@ -125,7 +136,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CELERY_BROKER_URL = 'amqp://localhost'
+# CELERY_BROKER_URL = 'amqp://localhost'
+
+CELERY_BROKER_URL = 'amqp://{}:{}@{}:{}//'.format(
+    os.environ['RABBITMQ_DEFAULT_USER'],
+    os.environ['RABBITMQ_DEFAULT_PASS'],
+    os.environ['RABBITMQ_DEFAULT_HOST'],
+    os.environ['RABBITMQ_DEFAULT_PORT'],
+)
 
 from celery.schedules import crontab  # noqa
 
