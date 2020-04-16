@@ -47,10 +47,6 @@ class EditProfile(UpdateView):
             user_id=self.request.user.id
         )
 
-        # TODO delete record to file
-        with open('temp_ip_list.txt', 'a') as file:
-            file.write(f'user_id: {self.request.user.id} ip: {ip} time: {datetime.datetime.now()}. \n')
-
         return super().get_success_url()
 
 

@@ -9,6 +9,8 @@ class LoggerMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        # if not full_path.startswith('/admin/'):
+
         start_time = time.time()
 
         response = self.get_response(request)
@@ -16,13 +18,9 @@ class LoggerMiddleware:
         full_time = time.time() - start_time
         full_path = request.path
 
-        # if full_path.startswith('/admin/'):
-        #     if request.user.pk is None:
-        #         request.user.pk = 0
         if request.user.pk is None:
             request.user.pk = 0
 
-        # logger_write_db(full_path, request.method, full_time, int(request.user.pk))
         logger_write_db.delay(full_path, request.method, full_time, int(request.user.pk))
 
         return response

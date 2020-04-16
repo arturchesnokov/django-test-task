@@ -136,3 +136,4 @@ settings_local.py
 avatar/
 static_content/
 .env
+temp_ip_list.txt

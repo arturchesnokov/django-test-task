@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 
 from django.core.mail import send_mail
 
-from user_profile.models import Logger
+from user_profile.models import Logger, ModelSaveSignal
 
 
 @shared_task
@@ -19,8 +19,13 @@ def logger_write_db(path, method, time, user_id):
                           user_id=user_id)
 
 
+@shared_task
+def signal_write_db(description):
+    ModelSaveSignal.objects.create(description=description)
+    # print("###########################:", description, '#############################')
+
+
 @task
 def clean_old_logs(days):
     now = datetime.now(timezone.utc)
     Logger.objects.filter(created__lte=now - timedelta(days=days)).delete()
-
