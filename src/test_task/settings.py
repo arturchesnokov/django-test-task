@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user_profile',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -162,6 +163,8 @@ CELERY_BEAT_SCHEDULE = {
         'args': (2,)  # days - logger data older then this q-ty of days will  be removed
     }
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # django-crispy-forms
 
 try:
     from test_task.settings_local import *  # noqa
