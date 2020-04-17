@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-
+{% load tags %}
 {% block title %}My Profile{% endblock %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
-{{ user.id }}
-{{ user.username }}
+<p>User id:{{ user.id }}</p>
+<p>Username: {{ user.username }}</p>
+<a href="{% url_to_edit_object user %}">Edit profile in Admin panel</a>
 {% else %}
 Need Auth
 {% endif %}
 
-{{ users }}
 
 {% endblock %}

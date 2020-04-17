@@ -135,5 +135,6 @@ settings_local.py
 !.gitkeep
 avatar/
 static_content/
+static/
 .env
 temp_ip_list.txt
