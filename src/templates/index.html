@@ -4,12 +4,54 @@
 
 {% block content %}
 
-    <div class="w-100">
-        <h1 class="mb-0">Artur Chesnokov</h1>
-        <div class="subheading mb-5">49127 Dnipro · Ukraine ·
-            <a href="mailto:name@email.com">my.email@email.com</a>
+
+<div>
+    <h3 class="mb-0">Artur Chesnokov</h3>
+    <div class="subheading mb-5">Dnipro · Ukraine </div>
+
+    <div>
+        <h4>Accomplish the following test tasks:</h4>
+
+        <p><span>1. Create django project.</span></p>
+        <ul>
+        <li><span>Use some tool to deploy development environment (e.g. virtualenv)</span></li>
+        <li><span>Create profile app (first name, last name, data of birth, biography,</span></li>
+        <li><span>contacts).</span></li>
+
+        <p><span>Add front page, where you'll show your profile data (use fixtures).</span></p>
+        </ul>
+
+        <p><span>2. Add authentication for this page.</span></p>
+
+        <p><span>3. Create middleware that stores all requests and execution time.</span></p>
+
+        <p><span>4. Create template context processor that add django.conf.settings to context.</span></p>
+
+        <p><span>5. Create a page where you may change your profile.</span></p>
+
+        <p><span>6. forms-widgets - assign calendar widget to "date of birth" field.</span></p>
+
+        <p><span>7. forms-model-extra - (edit profile form has been done with forms.ModelForm</span></p>
+
+        <ul>
+            <li>* Save IP of user who makes edit.</span></li>
+        </ul>
+
+        <p><span>8. template-tags - create template tag, that gets any model object,
+            and renders a link of change view in admin interface ( for example: {&#37; edit_listrequest.user &#37;}).</span></p>
+
+        <p><span>9. commands - create django command that prints all models and object counts.</span></p>
+
+        <p><span>10. signals - create signal handler, that creates a note in database when every model is created/edited/deleted.</span></p>
+
+        <p><span>Bonuses:</span></p>
+        <p><span>* Unit tests via django</span></p>
+        <p><span>* Use some tools to easily deploy dev environment (at least requirements.txt file, next level - vagrant or docker)</span>
+        </p>
+
         </div>
-        <p class="lead mb-5">Lorem ipsum..</p>
-    </div>
+
+
+</div>
 
 {% endblock %}

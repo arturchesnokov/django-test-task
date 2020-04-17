@@ -1,16 +1,29 @@
 {% extends 'base.html' %}
 
-{% block title %}settings_list{% endblock %}
+{% block title %}Context processor{% endblock %}
 
 {% block content %}
+<h1>Context processor</h1>
+<h5>Values from Settings - file by context </h5>
+</br>
 
-    <p>TIME_ZONE = {{ TIME_ZONE }}</p>
-    <p>LANGUAGE_CODE = {{LANGUAGE_CODE}}</p>
+<p>TIME_ZONE = {{ TIME_ZONE }}</p>
+<p>LANGUAGE_CODE = {{LANGUAGE_CODE}}</p>
+<p>BASE_DIR = {{BASE_DIR}}</p>
 
-{% for key, value in settings_list.items %}
+
+<blockquote class="blockquote">
+    <footer class="blockquote-footer">Why I cant iterate in settings_list?</footer>
+    </br>
+    <p>{&#37; for key, value in settings_list &#37;}</p>
+    <p>&#123;{ key }&#125; - &#123;{ value }&#125;</p>
+    <p>{&#37; endfor &#37;}</p>
+</blockquote>
+{% for key, value in settings_list %}
 <p>
     {{ key }} - {{ value }}
 </p>
 {% endfor %}
+
 
 {% endblock %}

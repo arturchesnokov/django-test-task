@@ -53,3 +53,4 @@ class EditProfile(UpdateView):
 class MiddlwareRecords(ListView):
     model = Logger
     template_name = 'logger_list.html'
+    paginate_by = 20

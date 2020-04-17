@@ -5,12 +5,16 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<p>User id:{{ user.id }}</p>
-<p>Username: {{ user.username }}</p>
+<h1>Profile info</h1>
+</br>
+
+<p><b>User id: </b>{{ user.id }}</p>
+<p><b>Username: </b>{{ user.username }}</p>
+<p><b>Email: </b>{{ user.email }}</p>
+<p><b>User id: </b>{{ user.id }}</p>
+</br>
 <a href="{% url_to_edit_object user %}">Edit profile in Admin panel</a>
 {% else %}
-Need Auth
+<div class="alert alert-warning" role="alert">Please Sign In</div>
 {% endif %}
-
-
 {% endblock %}
