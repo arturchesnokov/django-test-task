@@ -3,7 +3,7 @@ import datetime
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView
 
-from user_profile.models import User, Logger, EditFormIpLogger
+from user_profile.models import User, Logger, EditFormIpLogger, ModelSaveSignal
 from user_profile.forms import CustomUserChangeForm, SignUpForm
 
 
@@ -53,4 +53,10 @@ class EditProfile(UpdateView):
 class MiddlwareRecords(ListView):
     model = Logger
     template_name = 'logger_list.html'
+    paginate_by = 10
+
+
+class ModelSaveSignalList(ListView):
+    model = ModelSaveSignal
+    template_name = 'signals_list.html'
     paginate_by = 10

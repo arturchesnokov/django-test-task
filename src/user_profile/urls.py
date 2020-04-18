@@ -1,5 +1,5 @@
 from django.urls import path
-from user_profile.views import MyProfileView, EditProfile, MiddlwareRecords, SignUpView
+from user_profile.views import MyProfileView, EditProfile, MiddlwareRecords, SignUpView, ModelSaveSignalList
 
 app_name = 'user_profile'
 
@@ -8,5 +8,6 @@ urlpatterns = [
     path('signup/', SignUpView.as_view(), name='signup'),
     path('edit-profile/<int:pk>', EditProfile.as_view(), name='edit-profile'),
     path('requests-history', MiddlwareRecords.as_view(), name='requests-history'),
+    path('signals-history', ModelSaveSignalList.as_view(), name='signals-history'),
 
 ]
