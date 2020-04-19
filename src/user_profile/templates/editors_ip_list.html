@@ -3,7 +3,7 @@
 {% block title %}Requests history{% endblock %}
 
 {% block content %}
-<h1>Requests history</h1>
+<h1>Editors ip history</h1>
 <hr>
 
 
@@ -11,21 +11,19 @@
     <table class="table">
         <thead>
         <tr>
+            <th>id</th>
             <th>User id</th>
-            <th>method id</th>
-            <th>path</th>
-            <th>request time</th>
-            <th>time spend on request</th>
+            <th>ip</th>
+            <th>edit time</th>
         </tr>
         </thead>
         <tbody>
         {% for log in object_list %}
         <tr>
+            <td>{{ log.id }}</td>
             <td>{{ log.user_id }}</td>
-            <td>{{ log.method }}</td>
-            <td>{{ log.path }}</td>
+            <td>{{ log.user_ip }}</td>
             <td>{{ log.created }}</td>
-            <td>{{ log.time_delta }}</td>
         </tr>
         {% endfor %}
         </tbody>

@@ -9,7 +9,7 @@ from user_profile.tasks import signal_write_db
 @receiver(post_save)
 def model_changed(sender, instance, **kwargs):
     class_name = instance.__class__.__name__
-    if class_name not in ['ModelSaveSignal', ]:
+    if class_name not in ['ModelSaveSignal', 'Session' ]:
         info = f'{class_name} with id {instance.id} modified'
         signal_write_db.delay(info)
 
@@ -17,6 +17,6 @@ def model_changed(sender, instance, **kwargs):
 @receiver(pre_delete)
 def model_deleted(sender, instance, **kwargs):
     class_name = instance.__class__.__name__
-    if class_name not in ['ModelSaveSignal', ]:
+    if class_name not in ['ModelSaveSignal', 'Session' ]:
         info = f'{class_name} with id {instance.id} deleted'
         signal_write_db.delay(info)

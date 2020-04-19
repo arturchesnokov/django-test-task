@@ -40,14 +40,13 @@ class EditProfile(UpdateView):
         return queryset.filter(id=self.request.user.id)
 
     # * Save IP of user who makes edit.
-    def get_success_url(self):
+    def form_valid(self, form):
         ip = get_ip(self.request)
         EditFormIpLogger.objects.create(
             user_ip=ip,
             user_id=self.request.user.id
         )
-
-        return super().get_success_url()
+        return super().form_valid(form)
 
 
 class MiddlwareRecords(ListView):
@@ -59,4 +58,10 @@ class MiddlwareRecords(ListView):
 class ModelSaveSignalList(ListView):
     model = ModelSaveSignal
     template_name = 'signals_list.html'
+    paginate_by = 10
+
+
+class EditorsIpList(ListView):
+    model = EditFormIpLogger
+    template_name = 'editors_ip_list.html'
     paginate_by = 10
