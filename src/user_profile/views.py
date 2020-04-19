@@ -6,6 +6,8 @@ from django.views.generic import View, TemplateView, ListView, UpdateView, Creat
 from user_profile.models import User, Logger, EditFormIpLogger, ModelSaveSignal
 from user_profile.forms import CustomUserChangeForm, SignUpForm
 
+from helpers.get_ip import get_ip
+
 
 # 1.Add front page, where you'll show your profile data
 class MyProfileView(TemplateView):
@@ -17,15 +19,6 @@ class SignUpView(CreateView):
     queryset = User.objects.all()
     success_url = reverse_lazy('index')
     form_class = SignUpForm
-
-
-def get_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
 
 
 # 5. Create a page where you may change your profile.
